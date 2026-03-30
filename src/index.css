@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   MemeBet Design System - "The High-Stakes Terminal"
+   Inspired by Stitch MCP generated design system
+   ============================================ */
+
+@theme {
+  /* Surface Layers - Deep Sea Dark Mode */
+  --color-surface: #10141a;
+  --color-surface-dim: #10141a;
+  --color-surface-bright: #353940;
+  --color-surface-container-lowest: #0a0e14;
+  --color-surface-container-low: #181c22;
+  --color-surface-container: #1c2026;
+  --color-surface-container-high: #262a31;
+  --color-surface-container-highest: #31353c;
+
+  /* Primary - Teal/Mint (Yes/Bullish) */
+  --color-primary: #46f1c5;
+  --color-primary-container: #00d4aa;
+  --color-primary-fixed: #55fcd0;
+  --color-primary-dim: #28dfb5;
+  --color-on-primary: #00382b;
+  --color-on-primary-container: #005643;
+
+  /* Secondary - Coral (No/Bearish) */
+  --color-secondary: #ffb3b0;
+  --color-secondary-container: #901822;
+  --color-on-secondary: #68000f;
+  --color-on-secondary-container: #ff9e9b;
+
+  /* Tertiary - Amber */
+  --color-tertiary: #ffcea6;
+  --color-tertiary-container: #ffa858;
+
+  /* Text */
+  --color-on-surface: #dfe2eb;
+  --color-on-surface-variant: #bacac2;
+  --color-outline: #85948d;
+  --color-outline-variant: #3b4a44;
+
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+
+  /* Inverse */
+  --color-inverse-surface: #dfe2eb;
+  --color-inverse-on-surface: #2d3137;
+
+  /* Fonts */
+  --font-display: 'Manrope', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Shadows */
+  --shadow-ambient: 0 0 40px rgba(223, 226, 235, 0.08);
+  --shadow-glow-primary: 0 0 20px rgba(70, 241, 197, 0.15);
+  --shadow-glow-secondary: 0 0 20px rgba(255, 179, 176, 0.15);
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-surface-container-lowest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-surface-container-highest);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-outline);
+}
+
+/* Utility Classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.label-uppercase {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(49, 53, 60, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Ghost Border */
+.ghost-border {
+  border: 1px solid rgba(59, 74, 68, 0.15);
+}
+
+/* Gradient Accents */
+.gradient-primary {
+  background: linear-gradient(135deg, #46f1c5, #00d4aa);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #ffb3b0, #901822);
+}
+
+/* Percentage Bar */
+.percentage-bar {
+  position: relative;
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--color-surface-container-highest);
+}
+
+.percentage-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pulse Animation for Live indicator */
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-live {
+  animation: pulse-live 2s ease-in-out infinite;
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-ambient);
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-surface-container-low) 25%,
+    var(--color-surface-container-high) 50%,
+    var(--color-surface-container-low) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Category tab scrollbar hide */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
